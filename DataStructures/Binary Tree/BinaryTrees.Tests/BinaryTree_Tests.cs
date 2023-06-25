@@ -3,12 +3,12 @@ using Xunit;
 
 namespace BinaryTrees._Tests;
 
-public class BinaryTree__Tests
+public class BinaryTree_Tests
 {
     private readonly int[] input = { 56, 65, 32, 40, 48, 25, 20, 54, 18, 23, 12, 36 };
 
     [Fact]
-    public void Build__Test()
+    public void Build_Test()
     {
         //Redirect the Console to StringWriter to capture the displayed output
         var console = new StringWriter();
@@ -35,7 +35,7 @@ public class BinaryTree__Tests
     }
 
     [Fact]
-    public void Add__Test()
+    public void Add_Test()
     {
         //Redirect the Console to StringWriter to capture the displayed output
         var console = new StringWriter();
@@ -66,7 +66,7 @@ public class BinaryTree__Tests
     }
 
     [Fact]
-    public void Remove__Test()
+    public void Remove_Test()
     {
         //Redirect the Console to StringWriter to capture the displayed output
         var console = new StringWriter();

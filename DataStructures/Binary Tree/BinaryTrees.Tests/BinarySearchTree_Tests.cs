@@ -1,3 +1,4 @@
+using System;
 using BinaryTrees;
 using FluentAssertions;
 using Xunit;
@@ -23,16 +24,7 @@ public class BinarySearchTree_Tests
         bTree.Display(TraverseMode.BreadFirst);
 
         int[] expected = { 56, 32, 65, 25, 40, 20, 36, 48, 18, 23, 54, 12 };
-        var output = console.ToString()
-            .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse)
-            .ToArray();
-
-        //Assert
-        for (int i = 0; i < input.Length; i++)
-        {
-            Assert.Equal(expected[i], output[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -53,17 +45,7 @@ public class BinarySearchTree_Tests
         bTree.Display(TraverseMode.BreadFirst);
 
         int[] expected = { 56, 32, 65, 25, 40, 20, 36, 48, 18, 23, 54, 12, 15 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -84,17 +66,7 @@ public class BinarySearchTree_Tests
         bTree.Display(TraverseMode.BreadFirst);
 
         int[] expected = { 56, 25, 65, 20, 40, 18, 23, 36, 48, 12, 54 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -112,17 +84,7 @@ public class BinarySearchTree_Tests
         bTree.Display(TraverseMode.PreOrder);
 
         int[] expected = { 12, 18, 20, 23, 25, 32, 36, 40, 48, 54, 56, 65 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -140,17 +102,7 @@ public class BinarySearchTree_Tests
         bTree.Display(TraverseMode.PostOrder);
 
         int[] expected = { 65, 56, 54, 48, 40, 36, 32, 25, 23, 20, 18, 12 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -168,17 +120,7 @@ public class BinarySearchTree_Tests
         bTree.Display(TraverseMode.InOrder);
 
         int[] expected = { 56, 32, 25, 20, 18, 12, 23, 40, 36, 48, 54, 65 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -196,17 +138,7 @@ public class BinarySearchTree_Tests
         bTree.DisplayLeaves();
 
         int[] expected = { 12, 23, 36, 54, 65 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -224,17 +156,7 @@ public class BinarySearchTree_Tests
         bTree.DisplayOuterLeaves();
 
         int[] expected = { 56, 32, 25, 20, 18, 12, 23, 36, 54, 65 };
-        int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse).ToArray();
-
-        //Assert - Lengths
-        Assert.Equal(expected.Length, actual.Length);
-
-        //Assert - elements
-        for (int i = 0; i < expected.Length; i++)
-        {
-            Assert.Equal(expected[i], actual[i]);
-        }
+        ValidateExpectedAndActual(expected, console.ToString());
     }
 
     [Fact]
@@ -256,5 +178,21 @@ public class BinarySearchTree_Tests
 
         //Assert - Lengths
         Assert.Equal(expected, actual);
+    }
+
+    private void ValidateExpectedAndActual(int[] expected, string consoleOutput)
+    {
+        int[] actual = consoleOutput
+            .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(int.Parse).ToArray();
+
+        //Assert - Lengths
+        Assert.Equal(expected.Length, actual.Length);
+
+        //Assert - elements
+        for (int i = 0; i < expected.Length; i++)
+        {
+            Assert.Equal(expected[i], actual[i]);
+        }
     }
 }
