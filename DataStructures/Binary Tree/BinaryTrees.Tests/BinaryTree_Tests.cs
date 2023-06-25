@@ -209,7 +209,7 @@ public class BinaryTree_Tests
     }
 
     [Fact]
-    public void DisplayOuterLeaves_Test()
+    public void DisplayOuterRing_Test()
     {
         //Redirect the Console to StringWriter to capture the displayed output
         var console = new StringWriter();
@@ -220,7 +220,7 @@ public class BinaryTree_Tests
         bTree.Build(input);
 
         //Display the output
-        bTree.DisplayOuterLeaves();
+        bTree.DisplayOuterRing();
 
         int[] expected = { 56, 65, 40, 54, 18, 23, 12, 36, 20, 32 };
         int[] actual = console.ToString().Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)

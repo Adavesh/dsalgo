@@ -142,7 +142,7 @@ public class BinarySearchTree_Tests
     }
 
     [Fact]
-    public void DisplayOuterLeaves_Test()
+    public void DisplayOuterRing_Test()
     {
         //Redirect the Console to StringWriter to capture the displayed output
         var console = new StringWriter();
@@ -153,7 +153,7 @@ public class BinarySearchTree_Tests
         bTree.Build(input);
 
         //Display the output
-        bTree.DisplayOuterLeaves();
+        bTree.DisplayOuterRing();
 
         int[] expected = { 56, 32, 25, 20, 18, 12, 23, 36, 54, 65 };
         ValidateExpectedAndActual(expected, console.ToString());
@@ -173,7 +173,7 @@ public class BinarySearchTree_Tests
         //Display the output
         bTree.DisplayHeight();
 
-        var expected = "4";
+        var expected = "5";
         var actual = console.ToString();
 
         //Assert - Lengths

@@ -97,7 +97,7 @@ public class BinaryTree<T> : IBinaryTree<T> where T : IComparable<T>
         Console.Write(height);
     }
 
-    public void DisplayOuterLeaves()
+    public void DisplayOuterRing()
     {
         var outerNodes = GetOuterNodes(_rootNode);
 
